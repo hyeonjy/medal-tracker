@@ -6,7 +6,8 @@ import MedalList from "./MedalList";
 import { faToggleOff, faToggleOn } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
+  min-width: 800px;
   margin: 40px auto;
   padding: 20px;
   background-color: #fff;

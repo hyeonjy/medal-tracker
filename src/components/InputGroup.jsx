@@ -5,6 +5,7 @@ const InputField = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 const InputLabel = styled.label`
@@ -14,7 +15,7 @@ const InputLabel = styled.label`
 `;
 
 const Input = styled.input`
-  width: 145px;
+  width: 80%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
