@@ -51,7 +51,9 @@ const ToggleIcon = styled(FontAwesomeIcon)`
 
 const Medal = () => {
   const [toggle, setToggle] = useState(false); //금메달 순, 총 메달 순을 위한 토글
-  const [medalRecords, setMedalRecords] = useState([]);
+  const [medalRecords, setMedalRecords] = useState([]); //전체 메달 기록 목록
+
+  // 처음 렌더링 될 때, 로컬스토리지에서 전체 매달 기록을 가져옴
   useEffect(() => {
     const savedMedalRecords = localStorage.getItem("Medal");
     setMedalRecords(savedMedalRecords ? JSON.parse(savedMedalRecords) : []);
@@ -61,8 +63,6 @@ const Medal = () => {
   useEffect(() => {
     localStorage.setItem("Medal", JSON.stringify(medalRecords));
   }, [medalRecords]);
-
-  console.log(medalRecords);
 
   return (
     <Container>

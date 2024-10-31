@@ -65,12 +65,9 @@ const InputGroup = ({ onChange, countryData }) => {
             name={field.id}
             onChange={onChange}
             value={field.value}
-            pattern={idx !== 0 ? "^\\d{1,2}$" : undefined}
-            title={"에러"}
             required
-            maxLength={idx !== 0 ? 2 : undefined}
-            // min={idx !== 0 ? 0 : undefined}
-            // max={idx !== 0 ? 99 : undefined}
+            min={idx !== 0 ? 0 : undefined} //국가명이 아닌 input에만, min,max 적용
+            max={idx !== 0 ? 99 : undefined}
           />
         </InputField>
       ))}

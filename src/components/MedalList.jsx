@@ -68,6 +68,7 @@ const MedalList = ({ medalRecords, setMedalRecords, toggle }) => {
           </MedalTableHeader>
           <MedalTableBody>
             {/* 만약 메달 수가 같으면, 금->은->동 메달 순으로 정렬되도록 */}
+            {/* toggle이 true면 총 메달 순, false면 금메달 순으로 */}
             {medalRecords
               .sort((a, b) => {
                 const criteria = toggle

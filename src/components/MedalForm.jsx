@@ -29,27 +29,44 @@ const Button = styled.button`
   align-self: center;
 `;
 
+const ValidMessage = styled.p`
+  margin: 0;
+  color: tomato;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+`;
+
 const MedalForm = ({ medalRecords, setMedalRecords }) => {
+  const [isValid, setIsValid] = useState({
+    gold: true,
+    silver: true,
+    bronze: true,
+  }); //유효성 검증
+
   const [countryData, setCountryData] = useState({
     country: "",
     gold: 0,
     silver: 0,
     bronze: 0,
-  });
+  }); //input의 데이터
 
   const onChange = (event) => {
     const { name, value } = event.target;
-    const newValue = value.replace(/^0+/, ""); //앞에 붙여진 0은 없앤다.
-    setCountryData((prev) => ({ ...prev, [name]: newValue }));
+    setCountryData((prev) => ({
+      ...prev,
+      [name]: name === "country" ? value : parseInt(value),
+    }));
+
+    // 0부터 99까지인지 유효성 검사
+    if (name !== "country") {
+      const isMedalValid = parseInt(value) >= 0 && parseInt(value) <= 99;
+      setIsValid((prev) => ({ ...prev, [name]: isMedalValid }));
+    }
   };
 
   const addCountry = (event) => {
     event.preventDefault();
-    // 국가명을 입력하지 않았을 경우
-    if (countryData.country.trim() === "") {
-      alert("국가명을 입력해주세요!");
-      return;
-    }
 
     // 나라가 이미 있는지 확인
     const targetCountry = medalRecords.find(
@@ -63,15 +80,13 @@ const MedalForm = ({ medalRecords, setMedalRecords }) => {
     // 존재하지 않으면, 메달 목록 추가
     else {
       // 총 메달 수
-      const total =
-        parseInt(countryData.gold) +
-        parseInt(countryData.silver) +
-        parseInt(countryData.bronze);
+      const total = countryData.gold + countryData.silver + countryData.bronze;
 
       const newCountry = { ...countryData, id: Date.now(), total };
       setMedalRecords((prev) => [...prev, newCountry]);
     }
 
+    //  input 창 초기화
     setCountryData({ country: "", gold: 0, silver: 0, bronze: 0 });
   };
 
@@ -83,6 +98,12 @@ const MedalForm = ({ medalRecords, setMedalRecords }) => {
       return;
     }
 
+    // 0부터 99까지 유효 범위가 아닌 경우
+    if (!isValid.gold || !isValid.silver || !isValid.bronze) {
+      alert("금, 은, 동메달은 0부터 99까지만 가능합니다.");
+      return;
+    }
+
     // 해당하는 나라 찾기
     const targetCountry = medalRecords.find(
       (li) => li.country === countryData.country
@@ -91,10 +112,7 @@ const MedalForm = ({ medalRecords, setMedalRecords }) => {
     // 존재하면, 메달 목록 업데이트
     if (targetCountry) {
       // 총 메달 수
-      const total =
-        parseInt(countryData.gold) +
-        parseInt(countryData.silver) +
-        parseInt(countryData.bronze);
+      const total = countryData.gold + countryData.silver + countryData.bronze;
 
       const updatedList = medalRecords.map((li) =>
         li.id === targetCountry.id ? { ...countryData, id: li.id, total } : li
@@ -103,22 +121,34 @@ const MedalForm = ({ medalRecords, setMedalRecords }) => {
     }
     // 존재하지 않으면, alert창
     else {
-      alert("해당하는 나라는 없어!");
+      alert("해당하는 나라는 없습니다!");
     }
 
+    //  input 창 초기화
     setCountryData({ country: "", gold: 0, silver: 0, bronze: 0 });
   };
 
   return (
-    <Form onSubmit={addCountry}>
-      <InputGroup onChange={onChange} countryData={countryData} />
-      <ButtonWrap>
-        <Button type="submit">국가 추가</Button>
-        <Button type="button" onClick={updateCountry}>
-          업데이트
-        </Button>
-      </ButtonWrap>
-    </Form>
+    <>
+      <Form onSubmit={addCountry}>
+        <InputGroup
+          onChange={onChange}
+          countryData={countryData}
+          isValid={isValid}
+        />
+        <ButtonWrap>
+          <Button type="submit">국가 추가</Button>
+          <Button type="button" onClick={updateCountry}>
+            업데이트
+          </Button>
+        </ButtonWrap>
+      </Form>
+
+      {/* 유효메시지 */}
+      {!(isValid.gold && isValid.silver && isValid.bronze) && (
+        <ValidMessage>0부터 99까지만 가능합니다!</ValidMessage>
+      )}
+    </>
   );
 };
 
