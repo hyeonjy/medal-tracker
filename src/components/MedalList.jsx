@@ -63,6 +63,7 @@ const MedalList = ({ medalRecords, setMedalRecords, toggle }) => {
               <th>금메달</th>
               <th>은메달</th>
               <th>동메달</th>
+              <th>총 메달</th>
               <th>액션</th>
             </MedalTableRow>
           </MedalTableHeader>

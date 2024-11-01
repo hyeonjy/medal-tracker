@@ -23,6 +23,7 @@ const MedalItem = ({ li, medalRecords, setMedalRecords }) => {
       <td>{li.gold}</td>
       <td>{li.silver}</td>
       <td>{li.bronze}</td>
+      <td>{li.total}</td>
       <td>
         <DeleteBtn onClick={() => deleteCountry(li.id)}>삭제</DeleteBtn>
       </td>
