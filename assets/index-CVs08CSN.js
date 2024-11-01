@@ -642,7 +642,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
-`,Lv=({li:e,medalRecords:t,setMedalRecords:n})=>{const r=o=>{const i=t.filter(l=>l.id!==o);n(i)};return I.jsxs(Ym,{children:[I.jsx("td",{children:e.country}),I.jsx("td",{children:e.gold}),I.jsx("td",{children:e.silver}),I.jsx("td",{children:e.bronze}),I.jsx("td",{children:I.jsx(zv,{onClick:()=>r(e.id),children:"삭제"})})]})},Rv=ce.table`
+`,Lv=({li:e,medalRecords:t,setMedalRecords:n})=>{const r=o=>{const i=t.filter(l=>l.id!==o);n(i)};return I.jsxs(Ym,{children:[I.jsx("td",{children:e.country}),I.jsx("td",{children:e.gold}),I.jsx("td",{children:e.silver}),I.jsx("td",{children:e.bronze}),I.jsx("td",{children:e.total}),I.jsx("td",{children:I.jsx(zv,{onClick:()=>r(e.id),children:"삭제"})})]})},Rv=ce.table`
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -684,7 +684,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   tr:hover {
     background-color: #dcdcdc;
   }
-`,jv=({medalRecords:e,setMedalRecords:t,toggle:n})=>I.jsx("div",{children:e.length!==0?I.jsxs(Rv,{children:[I.jsx(Mv,{children:I.jsxs(Ym,{children:[I.jsx("th",{children:"국가명"}),I.jsx("th",{children:"금메달"}),I.jsx("th",{children:"은메달"}),I.jsx("th",{children:"동메달"}),I.jsx("th",{children:"액션"})]})}),I.jsx(Fv,{children:e.sort((r,o)=>{const i=n?["total","gold","silver","bronze"]:["gold","silver","bronze"];for(let l of i)if(o[l]!==r[l])return o[l]-r[l];return 0}).map(r=>I.jsx(Lv,{li:r,medalRecords:e,setMedalRecords:t},r.id))})]}):I.jsx("p",{children:"아직 추가된 국가가 없습니다. 메달을 추적하세요!"})}),Dv={prefix:"fas",iconName:"toggle-off",icon:[576,512,[],"f204","M384 128c70.7 0 128 57.3 128 128s-57.3 128-128 128l-192 0c-70.7 0-128-57.3-128-128s57.3-128 128-128l192 0zM576 256c0-106-86-192-192-192L192 64C86 64 0 150 0 256S86 448 192 448l192 0c106 0 192-86 192-192zM192 352a96 96 0 1 0 0-192 96 96 0 1 0 0 192z"]},$v={prefix:"fas",iconName:"toggle-on",icon:[576,512,[],"f205","M192 64C86 64 0 150 0 256S86 448 192 448l192 0c106 0 192-86 192-192s-86-192-192-192L192 64zm192 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"]},Uv=ce.div`
+`,jv=({medalRecords:e,setMedalRecords:t,toggle:n})=>I.jsx("div",{children:e.length!==0?I.jsxs(Rv,{children:[I.jsx(Mv,{children:I.jsxs(Ym,{children:[I.jsx("th",{children:"국가명"}),I.jsx("th",{children:"금메달"}),I.jsx("th",{children:"은메달"}),I.jsx("th",{children:"동메달"}),I.jsx("th",{children:"총 메달"}),I.jsx("th",{children:"액션"})]})}),I.jsx(Fv,{children:e.sort((r,o)=>{const i=n?["total","gold","silver","bronze"]:["gold","silver","bronze"];for(let l of i)if(o[l]!==r[l])return o[l]-r[l];return 0}).map(r=>I.jsx(Lv,{li:r,medalRecords:e,setMedalRecords:t},r.id))})]}):I.jsx("p",{children:"아직 추가된 국가가 없습니다. 메달을 추적하세요!"})}),Dv={prefix:"fas",iconName:"toggle-off",icon:[576,512,[],"f204","M384 128c70.7 0 128 57.3 128 128s-57.3 128-128 128l-192 0c-70.7 0-128-57.3-128-128s57.3-128 128-128l192 0zM576 256c0-106-86-192-192-192L192 64C86 64 0 150 0 256S86 448 192 448l192 0c106 0 192-86 192-192zM192 352a96 96 0 1 0 0-192 96 96 0 1 0 0 192z"]},$v={prefix:"fas",iconName:"toggle-on",icon:[576,512,[],"f205","M192 64C86 64 0 150 0 256S86 448 192 448l192 0c106 0 192-86 192-192s-86-192-192-192L192 64zm192 96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"]},Uv=ce.div`
   max-width: 1200px;
   min-width: 800px;
   margin: 40px auto;
