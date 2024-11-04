@@ -4,6 +4,12 @@
 (2) 목표 : 리액트 컴포넌트, 이벤트 관리, 상태(state) 관리를 통해 CRUD 기능을 구현 <br> 
 (3) 개발기간 : 2024.10.29 ~ 2024.10.31
 
+## 사용스택
+<div style="display:flex">
+  <img alt="React" src="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=black"/>
+  <img alt="styledcomponents" src="https://img.shields.io/badge/styledcomponents-DB7093.svg?&style=for-the-badge&logo=styledcomponents&logoColor=black"/>
+</div>
+
 ## 배포
 [medal-tracker 링크](https://hyeonjy.github.io/medal-tracker)
 
